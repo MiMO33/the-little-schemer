@@ -7,3 +7,7 @@
 ***
 
 推荐[scheme简明教程](https://legacy.gitbook.com/book/wizardforcel/teach-yourself-scheme/details)
+
+第一章介绍了scheme的基本数据类型  
+第二章主要是lambda函数，带一点儿递归   
+第三章主要讲的是递归  
