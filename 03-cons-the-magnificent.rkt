@@ -192,17 +192,3 @@
   'x
   'a
   '(a b c d e a a b))  ; (x b c d e x x b)
-
-
-      
-
-
-
-
-
-
-
-
-
-
-  

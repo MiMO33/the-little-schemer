@@ -177,5 +177,3 @@
 (display "tests of occur \n")
 (occur 'x '(a b x x c d x))     ; 3
 (occur 'x '())                  ; 0
-
-

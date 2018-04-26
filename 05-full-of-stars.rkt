@@ -235,18 +235,3 @@
 (eqlist?
   '(beef ((sausage)) (and (soda)))
   '(beef ((sausage)) (and (soda))))         ; #t
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

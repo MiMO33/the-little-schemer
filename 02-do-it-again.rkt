@@ -56,5 +56,3 @@
 
 ; Examples of member? failing
 (member? 'liver '(bagels and lox))
-
-
