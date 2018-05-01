@@ -1,949 +1,281 @@
-#reader(lib"read.ss""wxme")WXME0108 ## 
-#|
-   This file uses the GRacket editor format.
-   Open this file in DrRacket version 6.12 or later to read it.
+#lang racket
 
-   Most likely, it was created by saving a program in DrRacket,
-   and it probably contains a program with non-text elements
-   (such as images or comment boxes).
+;
+; Chapter 10 of The Little Schemer:
+; What Is the Value of All This?
+;
+; Code examples assemled by Qi Tianyuan <qitianyuan@foxmail.com>.
+;
 
-            http://racket-lang.org/
-|#
- 33 7 #"wxtext\0"
-3 1 6 #"wxtab\0"
-1 1 8 #"wximage\0"
-2 0 8 #"wxmedia\0"
-4 1 34 #"(lib \"syntax-browser.ss\" \"mrlib\")\0"
-1 0 36 #"(lib \"cache-image-snip.ss\" \"mrlib\")\0"
-1 0 68
-(
- #"((lib \"image-core.ss\" \"mrlib\") (lib \"image-core-wxme.rkt\" \"mr"
- #"lib\"))\0"
-) 1 0 16 #"drscheme:number\0"
-3 0 44 #"(lib \"number-snip.ss\" \"drscheme\" \"private\")\0"
-1 0 36 #"(lib \"comment-snip.ss\" \"framework\")\0"
-1 0 93
-(
- #"((lib \"collapsed-snipclass.ss\" \"framework\") (lib \"collapsed-sni"
- #"pclass-wxme.ss\" \"framework\"))\0"
-) 0 0 43 #"(lib \"collapsed-snipclass.ss\" \"framework\")\0"
-0 0 19 #"drscheme:sexp-snip\0"
-0 0 29 #"drscheme:bindings-snipclass%\0"
-1 0 101
-(
- #"((lib \"ellipsis-snip.rkt\" \"drracket\" \"private\") (lib \"ellipsi"
- #"s-snip-wxme.rkt\" \"drracket\" \"private\"))\0"
-) 2 0 88
-(
- #"((lib \"pict-snip.rkt\" \"drracket\" \"private\") (lib \"pict-snip.r"
- #"kt\" \"drracket\" \"private\"))\0"
-) 0 0 55
-#"((lib \"snip.rkt\" \"pict\") (lib \"snip-wxme.rkt\" \"pict\"))\0"
-1 0 34 #"(lib \"bullet-snip.rkt\" \"browser\")\0"
-0 0 25 #"(lib \"matrix.ss\" \"htdp\")\0"
-1 0 22 #"drscheme:lambda-snip%\0"
-1 0 29 #"drclickable-string-snipclass\0"
-0 0 26 #"drracket:spacer-snipclass\0"
-0 0 57
-#"(lib \"hrule-snip.rkt\" \"macro-debugger\" \"syntax-browser\")\0"
-1 0 26 #"drscheme:pict-value-snip%\0"
-0 0 45 #"(lib \"image-snipr.ss\" \"slideshow\" \"private\")\0"
-1 0 38 #"(lib \"pict-snipclass.ss\" \"slideshow\")\0"
-2 0 55 #"(lib \"vertical-separator-snip.ss\" \"stepper\" \"private\")\0"
-1 0 18 #"drscheme:xml-snip\0"
-1 0 31 #"(lib \"xml-snipclass.ss\" \"xml\")\0"
-1 0 21 #"drscheme:scheme-snip\0"
-2 0 34 #"(lib \"scheme-snipclass.ss\" \"xml\")\0"
-1 0 10 #"text-box%\0"
-1 0 32 #"(lib \"text-snipclass.ss\" \"xml\")\0"
-1 0 1 6 #"wxloc\0"
-          0 0 57 0 1 #"\0"
-0 75 1 #"\0"
-0 10 90 -1 90 -1 3 -1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 255 255 255 1 -1 0 9
-#"Standard\0"
-0 75 12 #"Courier New\0"
-0 14 90 -1 90 -1 3 -1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 255 255 255 1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 -1 -1 2 24
-#"framework:default-color\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1 1 1 150 0 150 0 0 0 -1 -1 2 15
-#"text:ports out\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 150 0 150 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1.0 0 -1 -1 93 -1 -1 -1 0 0 0 0 0 0 0 0 0 1.0 1.0 1.0 255 0 0 0 0 0 -1
--1 2 15 #"text:ports err\0"
-0 -1 1 #"\0"
-1 0 -1 -1 93 -1 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 255 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 175 0 0 0 -1 -1 2 17
-#"text:ports value\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 0 175 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1.0 0 92 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1.0 1.0 1.0 34 139 34 0 0 0 -1
--1 2 27 #"Matching Parenthesis Style\0"
-0 -1 1 #"\0"
-1.0 0 92 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1.0 1.0 1.0 34 139 34 0 0 0 -1
--1 2 1 #"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 38 38 128 0 0 0 -1 -1 2 37
-#"framework:syntax-color:scheme:symbol\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 38 38 128 0 0 0 -1 -1 2 38
-#"framework:syntax-color:scheme:keyword\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 38 38 128 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 194 116 31 0 0 0 -1 -1 2
-38 #"framework:syntax-color:scheme:comment\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 194 116 31 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 41 128 38 0 0 0 -1 -1 2 37
-#"framework:syntax-color:scheme:string\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 41 128 38 0 0 0 -1 -1 2 35
-#"framework:syntax-color:scheme:text\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 41 128 38 0 0 0 -1 -1 2 39
-#"framework:syntax-color:scheme:constant\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 41 128 38 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 132 60 36 0 0 0 -1 -1 2 49
-#"framework:syntax-color:scheme:hash-colon-keyword\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 132 60 36 0 0 0 -1 -1 2 42
-#"framework:syntax-color:scheme:parenthesis\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 132 60 36 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 255 0 0 0 0 0 -1 -1 2 36
-#"framework:syntax-color:scheme:error\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 255 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 36
-#"framework:syntax-color:scheme:other\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 16
-#"Misspelled Text\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 81 112 203 0 0 0 -1 -1 2
-38 #"drracket:check-syntax:lexically-bound\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 81 112 203 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 178 34 34 0 0 0 -1 -1 2 28
-#"drracket:check-syntax:set!d\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 178 34 34 0 0 0 -1 -1 2 37
-#"drracket:check-syntax:unused-require\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 255 0 0 0 0 0 -1 -1 2 36
-#"drracket:check-syntax:free-variable\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 255 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 68 0 203 0 0 0 -1 -1 2 31
-#"drracket:check-syntax:imported\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 68 0 203 0 0 0 -1 -1 2 47
-#"drracket:check-syntax:my-obligation-style-pref\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 178 34 34 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 116 0 0 0 0 -1 -1 2 50
-#"drracket:check-syntax:their-obligation-style-pref\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 116 0 0 0 0 -1 -1 2 48
-#"drracket:check-syntax:unk-obligation-style-pref\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 139 142 28 0 0 0 -1 -1 2
-49 #"drracket:check-syntax:both-obligation-style-pref\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 139 142 28 0 0 0 -1 -1 2
-26 #"plt:htdp:test-coverage-on\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 1
-#"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 1 0 0 0 0 0 0 255 165 0 0 0 0 -1 -1 2 27
-#"plt:htdp:test-coverage-off\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 1 0 0 0 0 0 0 255 165 0 0 0 0 -1 -1 4 1
-#"\0"
-0 70 1 #"\0"
-1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 1.0 1.0 1.0 1.0 1.0 1.0 0 0 0 0 0 0
--1 -1 4 4 #"XML\0"
-0 70 1 #"\0"
-1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 1.0 1.0 1.0 1.0 1.0 1.0 0 0 0 0 0 0
--1 -1 2 37 #"plt:module-language:test-coverage-on\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 -1 -1 2 38
-#"plt:module-language:test-coverage-off\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 1 0 0 0 0 0 0 255 165 0 0 0 0 -1 -1 4 1
-#"\0"
-0 71 1 #"\0"
-1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 1.0 1.0 1.0 1.0 1.0 1.0 0 0 0 0 0 0
--1 -1 4 1 #"\0"
-0 -1 1 #"\0"
-1.0 0 -1 -1 -1 -1 -1 -1 1 0 0 0 0 0 0 0 0 1.0 1.0 1.0 0 0 255 0 0 0 -1
--1 4 1 #"\0"
-0 71 1 #"\0"
-1.0 0 -1 -1 -1 -1 -1 -1 1 0 0 0 0 0 0 0 0 1.0 1.0 1.0 0 0 255 0 0 0 -1
--1 4 1 #"\0"
-0 71 1 #"\0"
-1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1.0 1.0 1.0 0 100 0 0 0 0 -1
--1 2 1 #"\0"
-0 -1 1 #"\0"
-1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 1 1 1 200 0 0 0 0 0 -1 -1 4 1
-#"\0"
-0 -1 1 #"\0"
-1.0 0 92 -1 -1 -1 -1 -1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 255 255 0 -1 -1
-          0 720 0 28 3 12 #"#lang racket"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 17 3 1 #";"
-0 0 24 29 1 #"\n"
-0 0 17 3 35 #"; Chapter 10 of The Little Schemer:"
-0 0 24 29 1 #"\n"
-0 0 17 3 32 #"; What Is the Value of All This?"
-0 0 24 29 1 #"\n"
-0 0 17 3 1 #";"
-0 0 24 29 1 #"\n"
-0 0 17 3 65
-#"; Code examples assemled by Qi Tianyuan <qitianyuan@foxmail.com>."
-0 0 24 29 1 #"\n"
-0 0 17 3 1 #";"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"atom?"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"x"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 14 3 3 #"and"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"not"
-0 0 24 3 2 #" ("
-0 0 14 3 5 #"pair?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"x"
-0 0 24 3 4 #")) ("
-0 0 14 3 3 #"not"
-0 0 24 3 1 #"("
-0 0 14 3 5 #"null?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"x"
-0 0 24 3 5 #")))))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"build"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 2 #"s1"
-0 0 24 3 1 #" "
-0 0 14 3 2 #"s2"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 14 3 4 #"cons"
-0 0 24 3 1 #" "
-0 0 14 3 2 #"s1"
-0 0 24 3 2 #" ("
-0 0 14 3 4 #"cons"
-0 0 24 3 1 #" "
-0 0 14 3 2 #"s2"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 24 3 6 #"()))))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 9 #"new-entry"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"build"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 14 3 5 #"build"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 24 3 1 #"("
-0 0 14 3 9 #"appetizer"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"entree"
-0 0 24 3 1 #" "
-0 0 14 3 8 #"bevarage"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"       "
-0 0 21 3 1 #"'"
-0 0 24 3 1 #"("
-0 0 14 3 4 #"pate"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"boeuf"
-0 0 24 3 1 #" "
-0 0 14 3 3 #"vin"
-0 0 24 3 2 #"))"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 14 3 5 #"build"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 24 3 1 #"("
-0 0 14 3 9 #"appetizer"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"entree"
-0 0 24 3 1 #" "
-0 0 14 3 8 #"bevarage"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"       "
-0 0 21 3 1 #"'"
-0 0 24 3 1 #"("
-0 0 14 3 4 #"beer"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"beer"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"beer"
-0 0 24 3 2 #"))"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 14 3 5 #"build"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 24 3 1 #"("
-0 0 14 3 8 #"bevarage"
-0 0 24 3 1 #" "
-0 0 14 3 7 #"dessert"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"       "
-0 0 21 3 1 #"'"
-0 0 24 3 2 #"(("
-0 0 14 3 4 #"food"
-0 0 24 3 1 #" "
-0 0 14 3 2 #"is"
-0 0 24 3 3 #") ("
-0 0 14 3 6 #"number"
-0 0 24 3 1 #" "
-0 0 14 3 3 #"one"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"with"
-0 0 24 3 1 #" "
-0 0 14 3 2 #"us"
-0 0 24 3 3 #")))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"first"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"p"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"p"
-0 0 24 3 3 #")))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"second"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"p"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 14 3 3 #"car"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"cdr"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"p"
-0 0 24 3 4 #"))))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"third"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"l"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 14 3 3 #"car"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"cdr"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"cdr"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"l"
-0 0 24 3 5 #")))))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 20 #"lookup-in-entry-help"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 4 #"name"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"names"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"values"
-0 0 24 3 1 #" "
-0 0 14 3 7 #"entry-f"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 15 3 4 #"cond"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 5 #"null?"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"names"
-0 0 24 3 3 #") ("
-0 0 14 3 7 #"entry-f"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"name"
-0 0 24 3 2 #")]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #"("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"names"
-0 0 24 3 2 #") "
-0 0 14 3 4 #"name"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"       ("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"values"
-0 0 24 3 2 #")]"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"      ["
-0 0 14 3 4 #"else"
-0 0 24 3 2 #" ("
-0 0 14 3 20 #"lookup-in-entry-help"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"name"
-0 0 24 29 1 #"\n"
-0 0 24 3 35 #"                                  ("
-0 0 14 3 3 #"cdr"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"names"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 35 #"                                  ("
-0 0 14 3 3 #"cdr"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"values"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 34 #"                                  "
-0 0 14 3 7 #"entry-f"
-0 0 24 3 5 #")])))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 15 #"lookup-in-entry"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 4 #"name"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"entry"
-0 0 24 3 1 #" "
-0 0 14 3 7 #"entry-f"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 14 3 20 #"lookup-in-entry-help"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"name"
-0 0 24 29 1 #"\n"
-0 0 24 3 27 #"                          ("
-0 0 14 3 5 #"first"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"entry"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 27 #"                          ("
-0 0 14 3 6 #"second"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"entry"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 26 #"                          "
-0 0 14 3 7 #"entry-f"
-0 0 24 3 3 #")))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 14 3 7 #"display"
-0 0 24 3 1 #" "
-0 0 19 3 29 #"\"tests of lookup-in-entry \\n\""
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 14 3 15 #"lookup-in-entry"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 6 #"entree"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 24 3 2 #"(("
-0 0 14 3 9 #"appetizer"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"entree"
-0 0 24 3 1 #" "
-0 0 14 3 8 #"bevarage"
-0 0 24 3 3 #") ("
-0 0 14 3 4 #"pate"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"boeuf"
-0 0 24 3 1 #" "
-0 0 14 3 3 #"vin"
-0 0 24 3 2 #"))"
-0 0 24 29 1 #"\n"
-0 0 24 3 2 #" ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"n"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 24 3 4 #"()))"
-0 0 24 29 1 #"\n"
-0 0 17 3 12 #"; ==> 'boeuf"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 14 3 15 #"lookup-in-entry"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 12 #"no-such-item"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 24 3 2 #"(("
-0 0 14 3 9 #"appetizer"
-0 0 24 3 1 #" "
-0 0 14 3 6 #"entree"
-0 0 24 3 1 #" "
-0 0 14 3 8 #"bevarage"
-0 0 24 3 3 #") ("
-0 0 14 3 4 #"pate"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"boeuf"
-0 0 24 3 1 #" "
-0 0 14 3 3 #"vin"
-0 0 24 3 2 #"))"
-0 0 24 29 1 #"\n"
-0 0 24 3 2 #" ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"n"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 24 3 4 #"()))"
-0 0 24 29 1 #"\n"
-0 0 17 3 9 #"; ==> '()"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 15 #"lookup-in-table"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 4 #"name"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"table"
-0 0 24 3 1 #" "
-0 0 14 3 7 #"table-f"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 15 3 4 #"cond"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 5 #"null?"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"table"
-0 0 24 3 3 #") ("
-0 0 14 3 7 #"table-f"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"name"
-0 0 24 3 2 #")]"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"      ["
-0 0 14 3 4 #"else"
-0 0 24 3 1 #"("
-0 0 14 3 15 #"lookup-in-table"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"name"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"table"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 29 #"                            ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 4 #"name"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 31 #"                              ("
-0 0 14 3 15 #"lookup-in-table"
-0 0 24 3 1 #" "
-0 0 14 3 4 #"name"
-0 0 24 29 1 #"\n"
-0 0 24 3 48 #"                                               ("
-0 0 14 3 3 #"cdr"
-0 0 24 3 1 #" "
-0 0 14 3 5 #"table"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 47 #"                                               "
-0 0 14 3 7 #"table-f"
-0 0 24 3 7 #")))])))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 20 #"expression-to-action"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"e"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 15 3 4 #"cond"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 5 #"atom?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 3 #") ("
-0 0 14 3 14 #"atom-to-action"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 2 #")]"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"      ["
-0 0 14 3 4 #"else"
-0 0 24 3 2 #" ("
-0 0 14 3 14 #"list-to-action"
-0 0 24 3 5 #")])))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 14 #"atom-to-action"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"e"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 15 3 4 #"cond"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 7 #"number?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 2 #"#t"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 4 #"cons"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 3 #"car"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 3 #"cdr"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 5 #"null?"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 3 #"eq?"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 5 #"atom?"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 5 #"zero?"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 4 #"add1"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 4 #"sub1"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 1 #" "
-0 0 21 3 1 #"'"
-0 0 14 3 7 #"number?"
-0 0 24 3 2 #") "
-0 0 14 3 6 #"*const"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"      ["
-0 0 14 3 4 #"else"
-0 0 24 3 1 #" "
-0 0 14 3 10 #"*identifer"
-0 0 24 3 4 #"])))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 1 #"("
-0 0 15 3 6 #"define"
-0 0 24 3 1 #" "
-0 0 14 3 14 #"list-to-action"
-0 0 24 29 1 #"\n"
-0 0 24 3 3 #"  ("
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #" ("
-0 0 14 3 1 #"e"
-0 0 24 3 1 #")"
-0 0 24 29 1 #"\n"
-0 0 24 3 5 #"    ("
-0 0 15 3 4 #"cond"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"      [("
-0 0 14 3 5 #"atom?"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"*"
-0 0 24 3 1 #"("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 2 #"))"
-0 0 24 29 1 #"\n"
-0 0 24 3 8 #"       ("
-0 0 15 3 4 #"cond"
-0 0 24 29 1 #"\n"
-0 0 24 3 11 #"         [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 14 3 5 #"quote"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 14 3 5 #"quote"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 11 #"         [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 15 3 6 #"lambda"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 15 3 6 #"lambda"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 11 #"         [("
-0 0 14 3 3 #"eq?"
-0 0 24 3 2 #" ("
-0 0 14 3 3 #"car"
-0 0 24 3 1 #" "
-0 0 14 3 1 #"e"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 15 3 4 #"cond"
-0 0 24 3 2 #") "
-0 0 21 3 1 #"'"
-0 0 15 3 4 #"cond"
-0 0 24 3 1 #"]"
-0 0 24 29 1 #"\n"
-0 0 24 3 10 #"         ["
-0 0 14 3 4 #"else"
-0 0 24 3 1 #" "
-0 0 14 3 11 #"*appliction"
-0 0 24 3 3 #"])]"
-0 0 24 29 1 #"\n"
-0 0 24 3 7 #"      ["
-0 0 14 3 4 #"else"
-0 0 24 3 1 #" "
-0 0 14 3 12 #"*application"
-0 0 24 3 4 #"])))"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 29 1 #"\n"
-0 0 24 3 2 #"  "
-0 0 24 29 1 #"\n"
-0 0 24 3 6 #"      "
-0           0
+(define atom?
+  (lambda (x)
+    (and (not (pair? x)) (not(null? x)))))
+
+(define build
+  (lambda (s1 s2)
+    (cons s1 (cons s2 '()))))
+
+(define new-entry build)
+
+(build '(appetizer entree bevarage)
+       '(pate boeuf vin))
+(build '(appetizer entree bevarage)
+       '(beer beer beer))
+(build '(bevarage dessert)
+       '((food is) (number one with us)))
+
+(define first
+  (lambda (p)
+    (car p)))
+
+(define second
+  (lambda (p)
+    (car (cdr p))))
+
+(define third
+  (lambda (l)
+    (car (cdr (cdr l)))))
+
+(define lookup-in-entry-help
+  (lambda (name names values entry-f)
+    (cond
+      [(null? names) (entry-f name)]
+      [(eq?(car names) name)
+       (car values)]
+      [else (lookup-in-entry-help name
+                                  (cdr names)
+                                  (cdr values)
+                                  entry-f)])))
+
+(define lookup-in-entry
+  (lambda (name entry entry-f)
+    (lookup-in-entry-help name
+                          (first entry)
+                          (second entry)
+                          entry-f)))
+
+(display "tests of lookup-in-entry \n")
+(lookup-in-entry
+ 'entree
+ '((appetizer entree bevarage) (pate boeuf vin))
+ (lambda (n) '()))
+; ==> 'boeuf
+
+(lookup-in-entry
+ 'no-such-item
+ '((appetizer entree bevarage) (pate boeuf vin))
+ (lambda (n) '()))
+; ==> '()
+
+(define lookup-in-table
+  (lambda (name table table-f)
+    (cond
+      [(null? table) (table-f name)]
+      [else(lookup-in-table name (car table)
+                            (lambda (name)
+                              (lookup-in-table name
+                                               (cdr table)
+                                               table-f)))])))
+
+(define expression-to-action
+  (lambda (e)
+    (cond
+      [(atom? e) (atom-to-action e)]
+      [else (list-to-action)])))
+
+(define *const
+  (lambda (e table)
+    (cond
+      [(number? e) e]
+      [(eq? e #t) #t]
+      [(eq? e #f) #f]
+      [else (build 'primitive) e])))
+
+(define text-of second)
+(define table-of first)
+(define formals-of second)
+(define body-of third)
+
+
+(define *quote
+  (lambda (e table)
+    (text-of e)))
+
+(define initial-table
+  (lambda (name)
+    (car '())))
+
+(define *identifer
+  (lambda (e table)
+    (lookup-in-table e table initial-table)))
+
+(define *lambda
+  (lambda (e table)
+    (build 'non-primitive
+           (cons table (cdr e)))))
+
+
+
+(define atom-to-action
+  (lambda (e)
+    (cond
+      [(number? e) *const]
+      [(eq? e #t) *const]
+      [(eq? e 'cons) *const]
+      [(eq? e 'car) *const]
+      [(eq? e 'cdr) *const]
+      [(eq? e 'null?) *const]
+      [(eq? e 'eq?) *const]
+      [(eq? e 'atom?) *const]
+      [(eq? e 'zero?) *const]
+      [(eq? e 'add1) *const]
+      [(eq? e 'sub1) *const]
+      [(eq? e 'number?) *const]
+      [else *identifer])))
+
+(define list-to-action
+  (lambda (e)
+    (cond
+      [(atom? (car e))
+       (cond
+         [(eq? (car e) 'quote) *quote]
+         [(eq? (car e) 'lambda) *lambda]
+         [(eq? (car e) 'cond) *cond]
+         [else *application])]
+      [else *application])))
+
+(define meaning
+  (lambda (e table)
+    (meaning e '())))
+
+(define value
+  (lambda (e)
+    (meaning e '())))
+
+(define else?
+  (lambda (x)
+    (cond
+      ((atom? x) (eq? x 'else))
+      (else #f))))
+
+(define question-of first)
+(define answer-of second)
+
+(define evcon
+  (lambda (lines table)
+    (cond
+      ((else? (question-of (car lines)))
+       (meaning (answer-of (car lines)) table))
+      ((meaning (question-of (car lines)) table))
+      (else (evcon (cdr lines) table)))))
+
+(define cond-lines-of cdr)
+
+(define *cond
+  (lambda (e table)
+    (evcon (cond-lines-of e) table)))
+
+(define evlis
+  (lambda (args table)
+    (cond
+      [(null? args) '()]
+      (else
+       (cond (meaning (car args) table)
+             (evlis (cdr args) table))))))
+
+(define function-of car)
+(define arguments-of cdr)
+
+(define *application
+  (lambda (e table)
+    (apply
+     (meaning (function-of e) (table)
+              (evlis(arguments-of e) table)))))
+
+(define primitive?
+  (lambda (l)
+    (eq? (first l) ('non-primitive))))
+
+(define non-primitive?
+  (lambda (l)
+    (eq? (first l) 'non-primitive)))
+
+(define apply
+  (lambda (fun vals)
+    (cond
+      ((primitive? fun)
+       (apply-primitive
+        (second fun) vals))
+      ((non-primitive? fun)
+       (apply-closure
+        (second fun) (vals))))))
+
+(define apply-primitive
+  (lambda (name vals)
+    (cond
+      ((eq? name 'cons)
+       (cons (first vals) (second vals)))
+      ((eq? name 'car)
+       (car (first vals)))
+      ((eq? name 'cdr)
+       (cdr (first vals)))
+      ((eq? name 'null?)
+       (null? (first vals)))
+      ((eq? name 'eq?)
+       (eq? (first vals) (second vals)))
+      ((eq? name 'atom?)
+       (:atom? (first vals)))
+      ((eq? name 'zero?)
+       (zero? (first vals)))
+      ((eq? name 'add1)
+       (+ 1 (first vals)))
+      ((eq? name 'sub1)
+       (- 1 (first vals)))
+      ((eq? name 'number?)
+       (number? (first vals))))))
+
+(define :atom?
+  (lambda (x)
+    (cond
+      ((atom? x) #t)
+      ((null? x) #f)
+      ((eq? (car x) 'primitive) #t)
+      ((eq? (car x) 'non-primitive) #t)
+      (else #f))))
+
+(define extend-table cons)
+
+(define apply-closure
+  (lambda (closure vals)
+    (meaning
+     (body-of closure)
+     (extend-table (new-entry
+                    (formals-of closure)
+                    vals)
+                   (table-of closure)))))
+
+;
+; Let's try out our brand new Scheme interpreter!
+;
+
+(value '(add1 6))                           ; 7
+(value '(quote (a b c)))                    ; '(a b c)
+(value '(car (quote (a b c))))              ; 'a
+(value '(cdr (quote (a b c))))              ; '(b c)
+(value
+ '((lambda (x)
+     (cons x (quote ())))
+   (quote (foo bar baz))))                 ; '((foo bar baz))
+
+
+
+
+
+
+
+
+
+
+
+
+
